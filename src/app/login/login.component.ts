@@ -25,8 +25,10 @@ export class LoginComponent implements OnInit {
           let user = JSON.parse(body._body);
           if(user.user.role == 'ADMIN'){
             this.router.navigate(['admin']);
+            location.reload();
           } else if (user.user.role == 'USER'){
             this.router.navigate(['user']);
+            location.reload();
           }
         }
       },

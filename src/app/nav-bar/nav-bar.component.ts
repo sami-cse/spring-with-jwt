@@ -9,27 +9,29 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
+  public user2: any;
+
   constructor(public userService: UserService, public router: Router) { }
 
   ngOnInit() {
+    this.getUser();
+  }
+
+  getUser() {
     let data = localStorage.getItem('currentUser');
-    let user = JSON.parse(data);
-    let userData = user._body;
-    let user1 = JSON.parse(userData);
-    let user2 = user1.user.role;
-    console.log(user2);
+    if (data != null) {
+      let user = JSON.parse(data);
+      let userData = user._body;
+      let user1 = JSON.parse(userData);
+      this.user2 = user1.user.role;
+    }
+
   }
 
   logout() {
-    this.userService.logOut().subscribe(
-      response => {
-        localStorage.clear();
-        this.router.navigate(['login']);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    localStorage.clear();
+    this.router.navigate(['login']);
+    location.reload();
   }
 
 

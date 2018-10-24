@@ -8,31 +8,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <div *ngIf="user2 ==='ADMIN'">
         <a class="navbar-brand nav-text-color" routerLink="/home">Home</a>
-      </div>
-      <div *ngIf="data">
-        <a class="navbar-brand nav-text-color" (click)="logout()">Logout</a>
-      </div>
-      <div *ngIf="user2 ==='ADMIN'">
-        <a class="navbar-brand nav-text-color" routerLink="/admin">Admin</a>
-      </div>
-      <div *ngIf="user2 ==='USER'">
-        <a class="navbar-brand nav-text-color" routerLink="/user">User</a>
-      </div>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span
-              class="nav-text-color">Click Here</span>
-            <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a routerLink="/login">Login</a></li>
-            <li><a routerLink="/signup">Signup</a></li>
-          </ul>
-        </li>
-      </ul>
+        <a *ngIf="user2" class="navbar-brand nav-text-color" (click)="logout()">Logout</a>
+        <a *ngIf="user2 =='ADMIN'" class="navbar-brand nav-text-color" routerLink="/admin">Admin</a>
+        <a *ngIf="user2 =='USER'" class="navbar-brand nav-text-color" routerLink="/user">User</a>
     </div>
   </div>
 </nav>
