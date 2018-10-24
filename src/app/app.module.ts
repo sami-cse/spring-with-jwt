@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
-import { AuthGuard } from './auth-guard/auth.guard';
+import { UserAuthGuard } from './auth-guard/user.auth.guard';
+import { AdminAuthGuard } from './auth-guard/admin.auth.guard';
+
 
 import { AppComponent } from './app.component';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
@@ -30,7 +32,7 @@ import { UserService } from './services/user.service';
     HttpModule,
     routing
   ],
-  providers: [UserService, AuthGuard],
+  providers: [UserService, UserAuthGuard,AdminAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

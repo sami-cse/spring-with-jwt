@@ -27,5 +27,14 @@ export class UserService {
     });
     return this.http.post(url, JSON.stringify(user), { headers: headers });
   }
+
+  logOut() {
+    let url = "http://localhost:8080/api/signup/logout";
+    let headers = new Headers({
+      'x-auth-token': localStorage.getItem('X-AuthToken')
+    });
+
+    return this.http.post(url, ' ', { headers: headers });
+  }
 }
 

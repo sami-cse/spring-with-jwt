@@ -6,41 +6,46 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
-import {AuthGuard} from './auth-guard/auth.guard';
+import { UserAuthGuard } from './auth-guard/user.auth.guard';
+import { AdminAuthGuard } from './auth-guard/admin.auth.guard';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
 
 const appRoutes: Routes = [
   {
     path: 'login',
-    component: LoginComponent,
+    component: LoginComponent
   },
   {
     path: 'home',
     component: HomeComponent,
     canActivate: [
-      AuthGuard
+      AdminAuthGuard
     ]
   },
   {
     path: 'signup',
-    component: SignupComponent,
+    component: SignupComponent
   },
   {
     path: 'user',
     component: UserdashboardComponent,
     canActivate: [
-      AuthGuard
+      UserAuthGuard
     ]
   },
   {
     path: 'admin',
     component: AdmindashboardComponent,
     canActivate: [
-      AuthGuard
+      AdminAuthGuard
     ]
   },
 
-  { path: '**', pathMatch: 'full', redirectTo: 'home' }
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/login'
+  }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
