@@ -9,9 +9,11 @@
         <span class="icon-bar"></span>
       </button>
         <a class="navbar-brand nav-text-color" routerLink="/home">Home</a>
-        <a *ngIf="user2" class="navbar-brand nav-text-color" (click)="logout()">Logout</a>
+        <a *ngIf="user2" href="javascript:void(0)" class="navbar-brand nav-text-color" (click)="logout()">Logout</a>
         <a *ngIf="user2 =='ADMIN'" class="navbar-brand nav-text-color" routerLink="/admin">Admin</a>
         <a *ngIf="user2 =='USER'" class="navbar-brand nav-text-color" routerLink="/user">User</a>
+        <a *ngIf="!user2" class="navbar-brand nav-text-color" routerLink="/signup">Signup</a>
+        <a *ngIf="!user2" class="navbar-brand nav-text-color" routerLink="/login">Login</a>
     </div>
   </div>
 </nav>
